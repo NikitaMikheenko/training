@@ -1,2 +1,1 @@
-# training
-Epam training
+Epam training homework
