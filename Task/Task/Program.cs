@@ -23,7 +23,7 @@ namespace Task
 
             foreach (var item in array3D)
             {
-                Console.WriteLine(item.BaseArea());
+                Console.WriteLine(item.Volume());
             }
         } 
     }
