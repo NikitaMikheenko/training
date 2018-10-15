@@ -6,25 +6,17 @@ namespace Task
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("2D:");
+            BigNumber a = "275";
+            BigNumber b = 25;
+            BigNumber c = new BigNumber(2);
 
-            Shape2D[] array2D = new Shape2D[] { new Rectangle(5, 4), new Rectangle(7, 7), new Triangle(4), new Circle(2) };
-            Array.Sort(array2D);
+            Console.WriteLine(a > b);
 
-            foreach (var item in array2D)
-            {
-                Console.WriteLine(item.Area());
-            }
+            Console.WriteLine(c == a);
 
-            Console.WriteLine("3D:");
+            BigNumber d = (a + b) * c;
 
-            Shape3D[] array3D = new Shape3D[] { new Cube(4), new Parallelepiped(7, 8, 3), new Hemisphere(7), new Prism(5, 3), new Cylinder(5, 8) };
-            Array.Sort(array3D);
-
-            foreach (var item in array3D)
-            {
-                Console.WriteLine(item.Volume());
-            }
+            Console.WriteLine(d);
         } 
     }
 }

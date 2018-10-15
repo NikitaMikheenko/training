@@ -5,10 +5,3 @@ D:\Epam\Task\Task\obj\Debug\Task.csprojAssemblyReference.cache
 D:\Epam\Task\Task\obj\Debug\Task.csproj.CoreCompileInputs.cache
 D:\Epam\Task\Task\obj\Debug\Task.exe
 D:\Epam\Task\Task\obj\Debug\Task.pdb
-D:\Epam\training\Task\Task\bin\Debug\Task.exe.config
-D:\Epam\training\Task\Task\bin\Debug\Task.exe
-D:\Epam\training\Task\Task\bin\Debug\Task.pdb
-D:\Epam\training\Task\Task\obj\Debug\Task.csprojAssemblyReference.cache
-D:\Epam\training\Task\Task\obj\Debug\Task.csproj.CoreCompileInputs.cache
-D:\Epam\training\Task\Task\obj\Debug\Task.exe
-D:\Epam\training\Task\Task\obj\Debug\Task.pdb

@@ -43,18 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Circle.cs" />
-    <Compile Include="Cube.cs" />
-    <Compile Include="Cylinder.cs" />
-    <Compile Include="Hemisphere.cs" />
-    <Compile Include="Parallelepiped.cs" />
-    <Compile Include="Prism.cs" />
+    <Compile Include="BigNumber.cs" />
+    <Compile Include="NumberEnumerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rectangle.cs" />
-    <Compile Include="Shape2D.cs" />
-    <Compile Include="Shape3D.cs" />
-    <Compile Include="Triangle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
