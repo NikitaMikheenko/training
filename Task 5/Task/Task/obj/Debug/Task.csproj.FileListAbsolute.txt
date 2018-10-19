@@ -1,0 +1,14 @@
+D:\Epam\Task\Task\bin\Debug\Task.exe.config
+D:\Epam\Task\Task\bin\Debug\Task.exe
+D:\Epam\Task\Task\bin\Debug\Task.pdb
+D:\Epam\Task\Task\obj\Debug\Task.csprojAssemblyReference.cache
+D:\Epam\Task\Task\obj\Debug\Task.csproj.CoreCompileInputs.cache
+D:\Epam\Task\Task\obj\Debug\Task.exe
+D:\Epam\Task\Task\obj\Debug\Task.pdb
+D:\Epam\Task 5\Task\Task\bin\Debug\Task.exe.config
+D:\Epam\Task 5\Task\Task\bin\Debug\Task.exe
+D:\Epam\Task 5\Task\Task\bin\Debug\Task.pdb
+D:\Epam\Task 5\Task\Task\obj\Debug\Task.csprojAssemblyReference.cache
+D:\Epam\Task 5\Task\Task\obj\Debug\Task.csproj.CoreCompileInputs.cache
+D:\Epam\Task 5\Task\Task\obj\Debug\Task.exe
+D:\Epam\Task 5\Task\Task\obj\Debug\Task.pdb
