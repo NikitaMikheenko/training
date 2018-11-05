@@ -7,17 +7,32 @@
 
 <html>
 <head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>University</title>
 </head>
 <body>
 
-    <div>
-        @Html.ActionLink("FirstBuilding", "FirstBuilding")
+    <div class="text-center">
+
+        <strong>University</strong>
+
     </div>
 
-    <div>
-        @Html.ActionLink("SecondBuilding", "SecondBuilding")
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="text-center">
+                @Html.ActionLink("FirstBuilding", "FirstBuilding")
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="text-center">
+                @Html.ActionLink("SecondBuilding", "SecondBuilding")
+            </div>
+        </div>
+
     </div>
 
 </body>
