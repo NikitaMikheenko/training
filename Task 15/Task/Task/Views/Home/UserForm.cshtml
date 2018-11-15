@@ -1,0 +1,208 @@
+﻿@model Task.Models.UserViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <title>User form</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(m=>m.Id)
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col" style="border: 1px solid black; margin-top: 1%">
+                <div class="row" style="margin-top: 3%">
+                    <div class="col-5">
+                        Name
+                    </div>
+
+                    <div class="col">
+                        @if (ViewBag.Add)
+                        {
+                            @Html.TextBoxFor(m => m.Name)
+                        }
+                        else
+                        {
+                            @Html.EditorFor(m => m.Name)
+                        }
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 1%">
+                    <div class="col-5">
+                        Middle name
+                    </div>
+
+                    <div class="col">
+                        @if (ViewBag.Add)
+                        {
+                            @Html.TextBoxFor(m => m.MiddleName)
+                        }
+                        else
+                        {
+                            @Html.EditorFor(m => m.MiddleName)
+                        }
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 1%">
+                    <div class="col-5">
+                        Last name
+                    </div>
+
+                    <div class="col">
+                        @if (ViewBag.Add)
+                        {
+                            @Html.TextBoxFor(m => m.LastName)
+                        }
+                        else
+                        {
+                            @Html.EditorFor(m => m.LastName)
+                        }
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 1%">
+                    <div class="col-5">
+                        Email
+                    </div>
+
+                    <div class="col">
+                        @if (ViewBag.Add)
+                        {
+                            @Html.TextBoxFor(m => m.Email, Request["email"])
+                        }
+                        else
+                        {
+                            @Html.HiddenFor(m => m.Email)
+
+                            @Html.DisplayFor(m => m.Email)
+                        }
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 1%">
+                    <div class="col-5">
+                        Password
+                    </div>
+
+                    <div class="col">
+                        @if (ViewBag.Add)
+                        {
+                            @Html.TextBoxFor(m => m.Password)
+                        }
+                        else
+                        {
+                            @Html.HiddenFor(m => m.Password)
+
+                            @Html.Label("****************")
+                        }
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 1%">
+                    <div class="col-5">
+                        Duplicate password
+                    </div>
+
+                    <div class="col">
+                        @if (ViewBag.Add)
+                        {
+                            @Html.TextBoxFor(m => m.DuplicatedPassword)
+                        }
+                        else
+                        {
+                            @Html.HiddenFor(m => m.DuplicatedPassword)
+
+                            @Html.Label("****************")
+                        }
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 1%">
+                    <div class="col-5">
+                        Age
+                    </div>
+
+                    <div class="col">
+                        @if (ViewBag.Add)
+                        {
+                            @Html.TextBoxFor(m => m.Age)
+                        }
+                        else
+                        {
+                            @Html.EditorFor(m => m.Age)
+                        }
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 1%">
+                    <div class="col-5">
+                        Phone
+                    </div>
+
+                    <div class="col">
+                        @if (ViewBag.Add)
+                        {
+                            @Html.TextBoxFor(m => m.Phone)
+                        }
+                        else
+                        {
+                            @Html.EditorFor(m => m.Phone)
+                        }
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 1%">
+                    <div class="col-5">
+                        Address
+                    </div>
+
+                    <div class="col">
+                        @if (ViewBag.Add)
+                        {
+                            @Html.TextBoxFor(m => m.Address)
+                        }
+                        else
+                        {
+                            @Html.EditorFor(m => m.Address)
+                        }
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 3%; margin-bottom: 3%">
+                    <div class="col">
+
+                        @if (ViewBag.Add)
+                        {
+                            <input type="submit" formaction="~/Home/Add" value="Add" />
+                        }
+                        else
+                        {
+                            <input type="submit" formaction="~/Home/Update" value="Update" />
+                        }
+
+                    </div>
+
+                    <div class="col">
+                        <input type="submit" formaction="~/Home/Index" value="Cancel" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="col"></div>
+        </div>
+    }
+</body>
+</html>

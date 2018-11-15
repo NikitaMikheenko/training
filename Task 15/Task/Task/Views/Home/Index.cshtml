@@ -1,0 +1,188 @@
+﻿@model Task.Models.UserViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <title>User database</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="col-1"></div>
+
+        <div class="col" style="border: 1px solid black; margin-top: 1%">
+
+            <div class="row" style="border: 1px solid black; margin-top: 1%; margin-left: 1%; margin-right: 1%">
+                
+                <form method="post" id="UpdateDelete">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td></td>
+
+                                <td>
+                                    Name
+                                </td>
+
+                                <td>
+                                    Middle name
+                                </td>
+
+                                <td>
+                                    Last name
+                                </td>
+
+                                <td>
+                                    Email
+                                </td>
+
+                                <td>
+                                    Age
+                                </td>
+
+                                <td>
+                                    Phone
+                                </td>
+
+                                <td>
+                                    Address
+                                </td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (Task.Models.UserViewModel item in ViewBag.Users)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.RadioButton("Id", $"{item.Id}")
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayTextFor(m => item.Name)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayTextFor(m => item.MiddleName)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayTextFor(m => item.LastName)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayTextFor(m => item.Email)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayTextFor(m => item.Age)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayTextFor(m => item.Phone)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayTextFor(m => item.Address)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </form>
+
+            </div>
+
+            <div class="row" style="margin-top: 1%; margin-bottom: 2%">
+
+                <div class="col-1">
+
+                </div>
+
+                <div class="col-3" style="border: 1px solid black">
+
+                    @using (Html.BeginForm())
+                    {
+                        <div style="margin-top: 3%">
+
+                            @Html.RadioButton("isAll", $"{true}", true)
+
+                            Show all
+
+                        </div>
+
+                        <div style="margin-top: 3%">
+
+                            @Html.RadioButton("isAll", $"{false}")
+
+                            Only:
+
+                            @Html.TextBox("range")
+
+                        </div>
+
+                        <div style="margin-top: 3%; margin-bottom: 3%; text-align: center">
+
+                            <input type="submit" formaction="~/Home/Index" value="Show"/>
+
+                        </div>
+                    }
+
+                </div>
+
+                <div class="col-5 text-center">
+                    <label style="color: red">
+                        @ViewBag.Message
+                    </label>
+                </div>
+
+                <div class="col-3">
+
+                    <div class="row">
+
+                        <form action="~/Home/UserForm" method="get">
+                            <input type="submit" value="Add" />
+                        </form>
+
+                    </div>
+
+                    <div class="row" style="margin-top:3%">
+
+                        <button form="UpdateDelete" formaction="~/Home/UserForm">Update</button>
+
+                    </div>
+
+                    <div class="row" style="margin-top:3%">
+
+                        <button form="UpdateDelete" formaction="~/Home/Delete">Delete</button>
+
+                    </div>
+
+                </div>
+
+                <div class="col-1">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-1"></div>
+
+    </div>
+
+</body>
+</html>

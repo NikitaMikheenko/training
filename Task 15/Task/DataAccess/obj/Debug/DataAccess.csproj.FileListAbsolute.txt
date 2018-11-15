@@ -1,0 +1,12 @@
+D:\Epam\Task\DataAccess\bin\Debug\DataAccess.dll.config
+D:\Epam\Task\DataAccess\bin\Debug\DataAccess.dll
+D:\Epam\Task\DataAccess\bin\Debug\DataAccess.pdb
+D:\Epam\Task\DataAccess\bin\Debug\EntityFramework.dll
+D:\Epam\Task\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\Epam\Task\DataAccess\bin\Debug\EntityFramework.xml
+D:\Epam\Task\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\Epam\Task\DataAccess\obj\Debug\DataAccess.csprojAssemblyReference.cache
+D:\Epam\Task\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+D:\Epam\Task\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+D:\Epam\Task\DataAccess\obj\Debug\DataAccess.dll
+D:\Epam\Task\DataAccess\obj\Debug\DataAccess.pdb
