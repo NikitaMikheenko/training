@@ -11,59 +11,39 @@ namespace Task.Controllers
         private UserRepository db = new UserRepository();
 
         // GET: Home
-        public ActionResult Index(bool? isAll, string range, string message)
+        public ActionResult Index(bool? isAll, string str, string message)
         {
             ViewBag.Message = message;
 
             List<UserViewModel> users = new List<UserViewModel>();
 
-            if (isAll == null || isAll == true)
+            if (isAll == null || isAll == true || str == "")
             {
                 foreach (var item in db.GetUsers())
                 {
-                    users.Add(new UserViewModel()
-                    {
-                        Id = item.Id,
-                        Name = item.Name,
-                        MiddleName = item.MiddleName,
-                        LastName = item.LastName,
-                        Email = item.Email,
-                        Password = item.Password,
-                        Age = item.Age,
-                        Phone = item.Phone,
-                        Address = item.Address
-                    });
+                    users.Add(ConvertToUserViewModel(item));
                 }
             }
             else
             {
-                string[] only = range.Split(new char[] { ' ', ',', '-' }, System.StringSplitOptions.RemoveEmptyEntries);
+                List<int> range = new List<int>();
 
-                List<int> elements = new List<int>();
-
-                foreach (var item in only)
+                try
                 {
-                    elements.Add(System.Convert.ToInt32(item));
+                    range = SplitStr(str);
+                }
+                catch (System.FormatException)
+                {
+                    return RedirectToAction("Index", new { message = "Use just '-' and ',' to choose users!" });
                 }
 
                 int i = 1;
 
                 foreach (var item in db.GetUsers())
                 {
-                    if (elements.Contains(i))
+                    if (range.Contains(i))
                     {
-                        users.Add(new UserViewModel()
-                        {
-                            Id = item.Id,
-                            Name = item.Name,
-                            MiddleName = item.MiddleName,
-                            LastName = item.LastName,
-                            Email = item.Email,
-                            Password = item.Password,
-                            Age = item.Age,
-                            Phone = item.Phone,
-                            Address = item.Address
-                        });
+                        users.Add(ConvertToUserViewModel(item));
                     }
 
                     i++;
@@ -76,79 +56,46 @@ namespace Task.Controllers
         }
 
         [HttpGet]
-        public ActionResult UserForm()
-        {
-            ViewBag.Add = true;
-
-            return View();
-        }
-
-        [HttpPost]
         public ActionResult UserForm(int? id)
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "Home", new { message = "Choose user!"});
+                return RedirectToAction("Index", new { message = "Choose user!" });
             }
             else
             {
-                ViewBag.Add = false;
+                if (id == 0)
+                {
+                    return View(new UserViewModel() { IsRegistered = false });
+                }
 
                 var model = db.GetUser((int)id);
 
-                return View(new UserViewModel()
-                {
-                    Name = model.Name,
-                    MiddleName = model.MiddleName,
-                    LastName = model.LastName,
-                    Email = model.Email,
-                    Password = model.Password,
-                    Age = model.Age,
-                    Phone = model.Phone,
-                    Address = model.Address
-                });
+                return View(ConvertToUserViewModel(model));
             }
         }
 
         [HttpPost]
-        public ActionResult Add(UserViewModel model)
+        public ActionResult UserForm(UserViewModel model)
         {
-            db.Add(new User()
+            if (ModelState.IsValid)
             {
-                Name = model.Name,
-                MiddleName = model.MiddleName,
-                LastName = model.LastName,
-                Email = model.Email,
-                Password = model.Password,
-                Age = model.Age,
-                Phone = model.Phone,
-                Address = model.Address
-            });
+                if (model.IsRegistered)
+                {
+                    if (db.Update(ConvertToUser(model)))
+                    {
+                        return RedirectToAction("Index");
+                    }
 
-            return RedirectToAction("Index");
-        }
+                    return RedirectToAction("Index", new { message = "The user was not found in the database!" });
+                }
 
-        [HttpPost]
-        public ActionResult Update(UserViewModel model)
-        {
-            if (db.Update(new User(){
-                Id = model.Id,
-                Name = model.Name,
-                MiddleName = model.MiddleName,
-                LastName = model.LastName,
-                Email = model.Email,
-                Password = model.Password,
-                Age = model.Age,
-                Phone = model.Phone,
-                Address = model.Address
-            }))
-            {
+                db.Add(ConvertToUser(model));
+
                 return RedirectToAction("Index");
             }
-            else
-            {
-                return RedirectToAction("Index", "Home", new { message = "The user was not found in the database!" });
-            }
+
+            return View(model);
         }
 
         [HttpPost]
@@ -156,7 +103,7 @@ namespace Task.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "Home", new { message = "Choose user!" });
+                return RedirectToAction("Index", new { message = "Choose user!" });
             }
             else
             {
@@ -166,9 +113,78 @@ namespace Task.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home", new { message = "The user is already deleted!" });
+                    return RedirectToAction("Index", new { message = "The user is already deleted!" });
                 }
             }
+        }
+
+        private User ConvertToUser(UserViewModel model)
+        {
+            return new User()
+            {
+                Id = model.Id,
+                Name = model.Name,
+                MiddleName = model.MiddleName,
+                LastName = model.LastName,
+                Email = model.Email,
+                Password = model.Password,
+                Age = model.Age,
+                Phone = model.Phone,
+                Address = model.Address
+            };
+        }
+
+        private UserViewModel ConvertToUserViewModel(User model)
+        {
+            return new UserViewModel()
+            {
+                Id = model.Id,
+                Name = model.Name,
+                MiddleName = model.MiddleName,
+                LastName = model.LastName,
+                Email = model.Email,
+                Password = model.Password,
+                Age = model.Age,
+                Phone = model.Phone,
+                Address = model.Address,
+                IsRegistered = true
+            };
+        }
+
+        private List<int> SplitStr(string str)
+        {
+            string[] parts = str.Split(new char[] { ' ', ',' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+            List<int> range = new List<int>();
+
+            for (int i = 0; i < parts.Length; i++)
+            {
+                if (parts[i].Contains("-"))
+                {
+                    if (parts[i].Length > 1)
+                    {
+                        string[] parts2 = parts[i].Split(new char[] { '-' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+                        for (int j = System.Convert.ToInt32(parts2[0]); j <= System.Convert.ToInt32(parts2[parts2.Length - 1]); j++)
+                        {
+                            range.Add(j);
+                        }
+                    }
+                    else if (i > 0 && i < parts.Length - 1)
+                    {
+                        for (int j = System.Convert.ToInt32(parts[i - 1]); j < System.Convert.ToInt32(parts[i + 1]); j++)
+                        {
+                            range.Add(j);
+                        }
+                    }
+                }
+                else
+                {
+                    range.Add(System.Convert.ToInt32(parts[i]));
+                }
+            }
+
+            return range;
         }
     }
 }

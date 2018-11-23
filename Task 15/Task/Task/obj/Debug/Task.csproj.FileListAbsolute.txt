@@ -83,3 +83,10 @@ D:\Epam\Task\Task\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.d
 D:\Epam\Task\Task\bin\roslyn\System.Threading.Tasks.Extensions.dll
 D:\Epam\Task\Task\bin\EntityFramework.SqlServer.dll
 D:\Epam\Task\Task\bin\EntityFramework.SqlServer.xml
+D:\Epam\Task\Task\bin\Antlr3.Runtime.dll
+D:\Epam\Task\Task\bin\Newtonsoft.Json.dll
+D:\Epam\Task\Task\bin\System.Web.Optimization.dll
+D:\Epam\Task\Task\bin\WebGrease.dll
+D:\Epam\Task\Task\bin\Antlr3.Runtime.pdb
+D:\Epam\Task\Task\bin\Newtonsoft.Json.xml
+D:\Epam\Task\Task\bin\System.Web.Optimization.xml
